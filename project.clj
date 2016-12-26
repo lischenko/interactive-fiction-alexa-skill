@@ -1,4 +1,4 @@
-(defproject ifas2 "2.0.1-SNAPSHOT"
+(defproject ifas2 "2.1.0-SNAPSHOT"
   :description "Interactive Fiction - Alexa skill. Version 2: rewrite of a Java app in Clojure."
   :url "https://github.com/lischenko/interactive-fiction-alexa-skill"
   :license {:name "Eclipse Public License"

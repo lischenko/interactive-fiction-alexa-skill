@@ -1,0 +1,31 @@
+{
+  "intents": [
+    {
+      "intent": "InteractiveFictionNewStory",
+      "slots": [
+        {
+          "name": "storyName",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
+      "intent": "InteractiveFictionCommandIntent",
+      "slots": [
+        {
+          "name": "payload",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

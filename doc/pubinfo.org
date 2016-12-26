@@ -1,0 +1,40 @@
+* Category
+Games, Trivia & Accessories
+
+* Sub Category
+Games
+
+* Testing Instructions
+It loads the stories from the internet and plumbs the input and output between the interpreter and Alexa. 
+
+The skill maintains the state of the last story for each customer id.
+
+Story commands are passed literally, so it is important to get them right.
+
+* Short Skill Description
+Alexa Z-machine for interactive fiction
+
+* Full Skill Description
+This skill is a Z-Machine (https://en.wikipedia.org/wiki/Z-machine) for Alexa. Interactive Fiction is typically played in text based interpreters, this skill brings it to Alexa.
+
+The wonderful IF community produced a lot of excellent stories over the last few decades -- check out IF Archive (www.ifarchive.org) -- but note that this skill only provides stories with clear license status. We are working on extending the list of supported stories by finding and white-listing those having permissive licenses and by obtaining explicit permissions from authors. If you are an IF author and can give us a permission to use your stories - please let us know at ifas2.feedback@gmail.com and we will be more than happy to white-list it. Same if you believe a certain story has a permissive license and can be white-listed.
+
+If you don't know which story to play, just follow the skill's recommendations ("Alexa, ask interactive fiction to help"); in particular "9:05" and "Galatea" are a good start.
+
+You can ask the skill to download a new story (e.g. "Alexa, ask Interactive Fiction to download 9:05") and the skill will download and start the interactive session: it reads you the piece of the story, then asks you for a command, then reads back the result and so on.
+
+You can stop at any time - just say "stop" at any time and your progress will be saved. When you are ready to resume, just run the skill with your next story command, e.g. "Alexa, ask Interactive Fiction to answer the phone".
+
+*** Note that this skill is somewhat of a technical experiment. Unlike many of the Alexa skills, Interactive Fiction stories don't use canned questions and answers so it is sometimes tricky for Alexa to understand very specific commands expected by some of them. Stay tuned; this should improve as Alexa is getting smarter. ***
+
+Please direct any feedback to ifas2.feedback@gmail.com. The source code for the skill can be found on https://github.com/lischenko/interactive-fiction-alexa-skill.
+
+Legal note (required by Amazon): this skill is not sponsored or endorsed by IFDB Home.
+
+* Example Phrases
+Alexa, ask Interactive Fiction to download Galatea
+Alexa, ask Interactive Fiction to download Nine oh Five
+Alexa, ask Interactive Fiction to look
+
+* Keywords
+Interactive,Fiction,Interactive Fiction,Adventure,Z-machine,infocom,text

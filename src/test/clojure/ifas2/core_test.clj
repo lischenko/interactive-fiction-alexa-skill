@@ -176,14 +176,20 @@
        "    }"
        "}"))
 
-(defn- command-req->map
-  ([req] (json/read-str req))
-  ([req replacement-command]
-   (assoc-in (command-req->map req) ["request" "intent" "slots" "payload" "value"] replacement-command)))
+(defn- req-set-command
+  ([req-map replacement-command]
+   (assoc-in req-map ["request" "intent" "slots" "payload" "value"] replacement-command)))
+
+(defn- req-set-story
+  ([req-map replacement-story]
+   (assoc-in req-map ["request" "intent" "slots" "storyName" "value"] replacement-story)))
+
+(defn- req->map
+  ([req] (json/read-str req)))
 
 (defn- response-match?
   [req s]
-  (let [json-request (command-req->map req)
+  (let [json-request (req->map req)
         output (-handleLambda nil json-request)
         response-text (get-in 
                        output
@@ -263,18 +269,26 @@
 
 (deftest stop-command-intent
   (testing "'stop', even if it comes as a command intent, should be treated as AMAZON.StopIntent"
-    (let [json-request (command-req->map command-request "stop")
+    (let [json-request (-> command-request req->map (req-set-command "stop"))
         [text _] (handle-intent json-request)]
     (is (= text "Okay, I have saved your progress, you can come back at any time.")))))
 
 (deftest literal-comands
   (testing "Commands starting with 'literally' are sent verbatim (without the word 'literally')"
-    (let [json-request (command-req->map command-request "literally stop")
+    (let [json-request (-> command-request req->map (req-set-command "literally stop"))
         [text _] (handle-intent json-request)]
     (is (re-matches #"(?s)^Your command: stop.*" text)))))
 
 (deftest garbage-in-literal-comands
   (testing "Address improbabale scenario from certification feedback 2016-12-22. Special characters (!) only (!) in literal request should be treated as help"
-    (let [json-request (command-req->map command-request "literally {}")
+    (let [json-request (-> command-request req->map (req-set-command "literally {}"))
         [text _] (handle-intent json-request)]
-    (is (re-matches #"You can start a new story.*" text)))))
+      (is (re-matches #"You can start a new story.*" text)))))
+
+(deftest custom-alphabet-table-respected
+  (testing "Savoir Faire uses custom alphabet table.
+See http://inform-fiction.org/zmachine/standards/z1point1/sect03.html section 3.5.5 for details.
+ZAX seems to ignore that and is probably using the standard table instead. As a result, the text is distorted: 'The beautiful life is always damnedz they sayq'"
+    (let [json-request (-> story-request req->map (req-set-story "savoir faire"))
+          [text _] (handle-intent json-request)]
+      (is (re-matches #"The beautiful life is always damned\, they say\..*" text)))))

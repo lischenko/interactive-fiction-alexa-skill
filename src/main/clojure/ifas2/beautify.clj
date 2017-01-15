@@ -20,11 +20,11 @@
   "Replaces a bunch of weird special characters often occuring within stories with something more suitable for voice interfaces (often empty)."
   [text]
   (-> text
-      (.replaceAll "(?m)^[     >]+" "")
-      (.replaceAll "[  ]{2,}" "\n")
+      (.replaceAll "(?m)^[\\s>]+" "")
+      (.replaceAll "\\s{2,}" "\n")
       (.replaceAll "(?m)\\n{3,}" "\n\n")
       (.replaceAll "(?m)^\\." "")
-      (.replaceAll "(?m).*[    ]*--$" "...")
+      (.replaceAll "(?m)\\s*--$" "...")
       .trim))
 
 (defmulti beautify-out

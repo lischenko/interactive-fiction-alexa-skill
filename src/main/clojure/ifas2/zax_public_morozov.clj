@@ -15,17 +15,17 @@
     (let [m (.getDeclaredMethod ZCPU method (make-array Class 0))]
       (.setAccessible m true)
       (.invoke m cpu (into-array [])))
-    (catch NoSuchMethodException e (log/error (str "Could not hack ZAX" method) e))
-    (catch InvocationTargetException e (log/error (str "Could not hack ZAX" method) e))
-    (catch IllegalAccessException e (log/error (str "Could not hack ZAX" method) e))))
+    (catch NoSuchMethodException e (log/error (str "Could not hack ZAX " method) e))
+    (catch InvocationTargetException e (log/error (str "Could not hack ZAX " method) e))
+    (catch IllegalAccessException e (log/error (str "Could not hack ZAX " method) e))))
 
 (defn- zcpuReflectionFlag [cpu flag val]
   (try
     (let [f (.getDeclaredField (class ZCPU) flag)]
       (.setAccessible f true)
       (.setBoolean f val))
-    (catch NoSuchFieldException e (log/error (str "Could not hack ZAX flag" flag) e))
-    (catch IllegalAccessException e (log/error (str "Could not hack ZAX flag" flag) e))))
+    (catch NoSuchFieldException e (log/error (str "Could not hack ZAX flag " flag) e))
+    (catch IllegalAccessException e (log/error (str "Could not hack ZAX flag " flag) e))))
 
 (defn- zcpuPersistenceReflectionHelper [cpu ui dump-filename method]
   (locking ui

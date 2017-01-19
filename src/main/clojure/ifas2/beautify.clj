@@ -14,7 +14,7 @@
   (fn [url vm-map] url))
 
 (defmethod beautify-story-sequence :default [url vm-map]
-  [(read-text-from-vm vm-map)])
+  [(read-text-from-vm! vm-map)])
 
 (defn- standard-beautify-out 
   "Replaces a bunch of weird special characters often occuring within stories with something more suitable for voice interfaces (often empty)."

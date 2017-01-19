@@ -63,7 +63,7 @@
          vm-map     (create-zax-vm story-file url dump64)]
 
      (when next-command
-       (write-text-to-vm vm-map (beautify-in url next-command)))
+       (write-text-to-vm! vm-map (beautify-in url next-command)))
 
      (let [raw-texts (beautify-story-sequence url vm-map)
            raw-text  (str/join "\n" raw-texts)

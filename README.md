@@ -2,6 +2,9 @@
 
 A [Z-Machine](https://en.wikipedia.org/wiki/Z-machine) for Alexa.
 
+## See it in action
+[![Playing Galatea on Alexa](http://img.youtube.com/vi/_QHdZCfx8Fk/0.jpg)](http://www.youtube.com/watch?v=_QHdZCfx8Fk)
+
 ## Usage
 
 This skill has been deployed to Alexa Skill Store; just say "Alexa, enable Interactive Fiction". If you don't have an Alexa device, you can try the skill out on https://echosim.io/ but it does not support sessions, making it seriously harder to use than a real Echo.

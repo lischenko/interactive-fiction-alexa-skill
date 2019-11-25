@@ -1,4 +1,4 @@
-(defproject ifas2 "2.1.0-SNAPSHOT"
+(defproject ifas2 "2.2.0-SNAPSHOT"
   :description "Interactive Fiction - Alexa skill. Version 2: rewrite of a Java app in Clojure."
   :url "https://github.com/lischenko/interactive-fiction-alexa-skill"
   :license {:name "Eclipse Public License"
@@ -9,7 +9,7 @@
                  [org.clojure/tools.logging "0.3.1"]
                  [org.slf4j/slf4j-log4j12 "1.7.1"]
 
-                 [github-mattkimmel/zax "0.91"]
+                 [github-mattkimmel/zax "0.92-SNAPSHOT-5"]
                  [amazonica "0.3.77" :exclusions [com.amazonaws/aws-java-sdk
                                                   com.amazonaws/amazon-kinesis-client]]
                  [com.amazonaws/aws-java-sdk-core "1.11.26"]

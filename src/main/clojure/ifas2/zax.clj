@@ -5,7 +5,7 @@
         ifas2.zax-public-morozov)
   (:require [clojure.core.async :as async :refer [<!! >!! alts!! timeout thread]])
   (:import (ifas.zax MyZaxUi)
-           (com.zaxsoft.zmachine ZCPU)
+           (com.zaxsoft.zax.zmachine ZCPU)
            (java.io File)))
 
 (defn destroy-zax-vm!

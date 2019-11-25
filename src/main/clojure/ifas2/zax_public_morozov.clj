@@ -1,7 +1,7 @@
 (ns ifas2.zax-public-morozov
-  "Uses reflection to access private parts of ZAX. Trading off the ugly hack for unchaned ZAX code."
+  "Uses reflection to access private parts of ZAX. Trading off the ugly hack for unchanged ZAX code."
   (:import
-   com.zaxsoft.zmachine.ZCPU
+   com.zaxsoft.zax.zmachine.ZCPU
 
    java.io.IOException
    java.lang.reflect.Field

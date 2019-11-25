@@ -12,22 +12,37 @@ This skill has been deployed to Alexa Skill Store; just say "Alexa, enable Inter
 [The official page of the skill](https://www.amazon.com/Vitaly-Lishchenko-Interactive-Fiction/dp/B01IVEANGM/) on Amazon.com.
 
 ## Installation
+*(Pre-requisites: install [Maven](https://github.com/apache/maven) and [Leiningen](https://github.com/technomancy/leiningen))*
 
 If you want to build it from scratch:
 
  - Get, build and install [ZAX](https://github.com/mattkimmel/zax) into local Maven repository:
+
+
 ```bash
 #!/bin/bash
 
 pushd ~/tmp/
 git clone https://github.com/mattkimmel/zax.git
 cd zax
-rm -f zax.jar
-ant -f zax.xml all
-echo -e "Manifest-Version: 1.0\nCreated-By: 1.8.0_45 (Oracle Corporation)\nMain-Class: com.zaxsoft.apps.zax.Zax\n" > /tmp/manifest
-jar cvmf /tmp/manifest zax.jar -C out/production/Zax/ com
+git checkout -f 3113c4a74140628cfd0209c4756057f129ae2215 # tested with this version
 
-mvn install:install-file -Dfile=zax.jar -DgroupId=github-mattkimmel -DartifactId=zax -Dversion=0.91 -Dpackaging=jar
+patch --ignore-whitespace build.gradle << EOF
+32a33,37
+> 
+> java {
+>     sourceCompatibility = JavaVersion.VERSION_1_8
+>     targetCompatibility = JavaVersion.VERSION_1_8
+> }
+\ No newline at end of file
+EOF
+
+rm -f zax.jar
+./gradlew clean build
+
+jar cvmf build/tmp/jar/MANIFEST.MF zax.jar -C build/classes/java/main/ com
+
+mvn install:install-file -Dfile=zax.jar -DgroupId=github-mattkimmel -DartifactId=zax -Dversion=0.92-SNAPSHOT-5 -Dpackaging=jar
 popd
 ```
  - Clone this project and build an uberjar with [Leiningen](https://github.com/technomancy/leiningen):
@@ -51,6 +66,6 @@ The `IfasStoryLinks` table contains mappings from story names to URLs (should be
 
 ## License
 
-Copyright © 2016 Vitaly Lishchenko
+Copyright © 2016–2019 Vitaly Lishchenko
 
 Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version. 

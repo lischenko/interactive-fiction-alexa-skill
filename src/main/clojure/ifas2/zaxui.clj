@@ -8,7 +8,7 @@
             [clojure.core.async :as async :refer [<!! >!! chan close! thread]])
   (:gen-class
    :name ifas.zax.MyZaxUi
-   :implements [com.zaxsoft.zmachine.ZUserInterface]
+   :implements [com.zaxsoft.zax.zmachine.ZUserInterface]
    :state state
    :init init-state
    :methods [[getUserInputStream [] Object]

@@ -15,7 +15,7 @@
         iff.parser))
 
 (def skill-name "Interactive Fiction")
-(def sample-stories ["Galatea" "Nine oh five" "Night at the computer center"])
+(def sample-stories ["Galatea" "Nine oh five" "Night at the computer center" "Out"])
 
 (defn- randomized-help-text []
   (let [random-story (rand-nth sample-stories)]
